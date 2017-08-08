@@ -45,8 +45,8 @@ RUN apk add --no-cache --virtual .run-deps \
         ncurses \
         pcre
 
-ENV LISTEN=":80"
-ENV BACKEND="localhost"
-ENV STORAGE="malloc,256m"
+ENV VARNISH_LISTEN=":80"
+ENV VARNISH_BACKEND="localhost"
+ENV VARNISH_STORAGE="malloc,256m"
 
-CMD varnishd -a "$LISTEN" -b "$BACKEND" -s "$STORAGE" -F
+CMD varnishd -a "$VARNISH_LISTEN" -b "$VARNISH_BACKEND" -s "$VARNISH_STORAGE" -F
