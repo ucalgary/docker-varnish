@@ -45,5 +45,7 @@ RUN apk add --no-cache --virtual .run-deps \
         ncurses \
         pcre
 
+ENV LISTEN=":80"
 ENV BACKEND="localhost"
-CMD varnishd -b $BACKEND -F
+
+CMD varnishd -a $LISTEN -b $BACKEND -F
