@@ -31,3 +31,4 @@ RUN ./configure \
         --prefix=/usr/local \
         --without-jemalloc
 RUN make
+RUN make install
