@@ -44,3 +44,6 @@ RUN apk add --no-cache --virtual .run-deps \
         musl-dev \
         ncurses \
         pcre
+
+ENV BACKEND="localhost"
+CMD varnishd -b $BACKEND -F
