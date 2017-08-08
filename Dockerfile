@@ -49,4 +49,4 @@ ENV LISTEN=":80"
 ENV BACKEND="localhost"
 ENV STORAGE="malloc,256m"
 
-CMD varnishd -a $LISTEN -b $BACKEND -s $STORAGE -F
+CMD varnishd -a "$LISTEN" -b "$BACKEND" -s "$STORAGE" -F
