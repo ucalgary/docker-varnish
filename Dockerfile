@@ -36,3 +36,11 @@ RUN make install
 FROM alpine:3.6
 
 COPY --from=varnish /usr/local /usr/local
+
+RUN apk add --no-cache --virtual .run-deps \
+        gcc \
+        libedit \
+        libexecinfo \
+        musl-dev \
+        ncurses \
+        pcre
