@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.6 as varnish
 
 ARG VARNISH_VER=5.1.3
 ARG VARNISH_URL=http://repo.varnish-cache.org/source/varnish-$VARNISH_VER.tar.gz
@@ -32,3 +32,7 @@ RUN ./configure \
         --without-jemalloc
 RUN make
 RUN make install
+
+FROM alpine:3.6
+
+COPY --from=varnish /usr/local /usr/local
