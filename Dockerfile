@@ -21,8 +21,12 @@ RUN apk add --no-cache --virtual .build-deps \
         make \
         musl-dev \
         ncurses-dev \
+        patch \
         pcre-dev \
         py-docutils
+COPY patches /tmp/varnish/patches/
+RUN patch -p1 -l < patches/fix-stack-overflow.patch && \
+    patch -p1 -l < patches/musl-mode_t.patch
 RUN ./configure \
         --prefix=/usr/local \
         --without-jemalloc
