@@ -12,3 +12,18 @@ RUN tar \
         --file "/tmp/varnish.tar.gz" \
         --directory "/tmp/varnish" \
         --strip-components 1
+
+RUN apk add --no-cache --virtual .build-deps \
+        gcc \
+        libedit-dev \
+        linux-headers \
+        libexecinfo-dev \
+        make \
+        musl-dev \
+        ncurses-dev \
+        pcre-dev \
+        py-docutils
+RUN ./configure \
+        --prefix=/usr/local \
+        --without-jemalloc
+RUN make
